@@ -9,7 +9,7 @@
       :class="{ 'bg-gray-700': bgChange }"
       class="flex w-100 h-screen bg-gray-200 justify-center items-center"
     >
-      <card @colorChange="changeColor" :results="result" />
+      <card @colorChange="bgChange = true" :results="result" />
     </div>
   </div>
 </template>
@@ -34,9 +34,6 @@ export default {
       let user = await response.json();
       this.results = user.results;
     },
-    changeColor() {
-      this.bgChange = true
-    }
   },
   async created() {
     await this.makeCall();
