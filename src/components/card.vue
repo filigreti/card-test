@@ -94,6 +94,13 @@ export default {
       currentHover: null
     }
   },
+  watch: {
+    currentStar(x) {
+      if (x) {
+        this.$emit('colorChange')
+      }
+    }
+  },
   computed: {
     cardResult() {
       return this.results

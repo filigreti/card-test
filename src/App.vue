@@ -6,9 +6,10 @@
     <div
       v-for="(result, index) in results"
       :key="index"
+      :class="{ 'bg-gray-700': bgChange }"
       class="flex w-100 h-screen bg-gray-200 justify-center items-center"
     >
-      <card :results="result" />
+      <card @colorChange="changeColor" :results="result" />
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ export default {
   data() {
     return {
       results: [],
+      bgChange: false
     };
   },
   components: {
@@ -32,6 +34,9 @@ export default {
       let user = await response.json();
       this.results = user.results;
     },
+    changeColor() {
+      this.bgChange = true
+    }
   },
   async created() {
     await this.makeCall();
